@@ -1,0 +1,281 @@
+body
+{
+    /* Background pattern from subtlepatterns.com */
+    background-image: url("hexellence.png");
+    font-size: 20px;
+}
+
+
+#container
+{
+	font-family: 'Roboto', sans-serif;
+    background-color: white;
+    width: 300px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    -webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+    -moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+    box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+}
+
+input[type=text],
+input[type=password]
+{
+    width: 300px;
+    background-color: #efefef;
+    color: #666;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 10px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus
+{
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+    box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+    border: 2px solid #a5cda5;
+    background-color: #e9f3e9;
+    color: #428c42;
+}
+
+input[type=submit]
+{
+    width: 300px;
+    background-color: #36b03c;
+    font-size:20px;
+    color: white;
+    padding: 15px 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+input[type=submit]:focus
+{
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+    -moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+    box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+input[type=submit]:hover
+{
+    background-color: #37b93d;
+}
+
+input::-webkit-input-placeholder
+{
+    color: #999;
+}
+input:focus::-webkit-input-placeholder
+{
+    color: #428C42;
+}
+/* Firefox < 19 */
+input:-moz-placeholder
+{
+    color: #999;
+}
+input:focus:-moz-placeholder
+{
+    color: #428C42;
+}
+/* Firefox > 19 */
+input::-moz-placeholder
+{
+    color: #999;
+}
+input:focus::-moz-placeholder
+{
+    color: #428C42;
+}
+/* Internet Explorer 10 */
+input:-ms-input-placeholder
+{
+    color: #999;
+}
+input:focus:-ms-input-placeholder
+{
+    color: #428C42;
+}
+
+
+
+/*==============================================================
+tooltip - above text boxs
+*/
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 400px;     /*wielkosc */
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -200px;  /* - polowa width*/
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*=====================================================
+tooltip
+info about validate inputs
+*/
+
+
+
+.tooltip .tooltip-right {
+    visibility: hidden;
+    position: absolute;
+    width: 220px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    opacity: 1;
+    top: -5px;
+    left: 125%;  
+}
+
+.tooltip-right::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+/*
+CHCECKBOX
+*/
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #eee;
+    
+    border: 2px solid #ddd;
+    border-radius: 1px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a green background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #37b93d;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);    
+}
+
+#link {
+	color: #2a962f;
+	font-style: italic;
+}
+
+#footer {
+	font-family: 'Roboto', sans-serif;
+    -webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+    -moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+    box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	font-size: 15px;
+	position: fixed;
+	background: #A9A9A9;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
