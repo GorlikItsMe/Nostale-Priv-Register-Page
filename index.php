@@ -74,14 +74,12 @@ if ($ch==false){hasError("Username Must have minimum 6 charakters and max 30<br>
 
 $ip = filtruj($_SERVER['REMOTE_ADDR']);
 
-if (!isset($_POST['rules_check'])) { hasError("Accept Rules!");}
 
 
+if ($iserror==true){echo 'Login Error<br>'.$descerror; exit();}
 
-if ($iserror==true){echo 'Blad logowania<br>'.$descerror; exit();}
 
-
-	if ($_POST['pass1'] !== $_POST['pass2']){ hasError('Hasla nie są takie same!');}
+	if ($_POST['pass1'] !== $_POST['pass2']){ hasError('Passwords aren\'t the same!');}
 	
 	
 	# username
@@ -115,14 +113,12 @@ if ($iserror==true){echo 'Blad logowania<br>'.$descerror; exit();}
 	echo 'Rejestruje!';
 	$pass = hash("sha512", $_POST['pass1']);
 
-if (isset($refferid))
-{
-	$sql = "INSERT INTO Account (Name, Password, Authority, Email, RegistrationIP, VerificationToken, ReferrerId ) VALUES ( ?, ?, '0', ?, ?, 'yes', ?)";
-	$params = array($_POST['username'], $pass, $_POST['email'], $ip, $refferid);
-}else{
-	$sql = "INSERT INTO Account (Name, Password, Authority, Email, RegistrationIP, VerificationToken) VALUES ( ?, ?, '0', ?, ?, 'yes')";
-	$params = array($_POST['username'], $pass, $_POST['email'], $ip);
-}
+
+	
+//$sql = "INSERT INTO Account (Name, Password, Authority, Email, RegistrationIP, VerificationToken) VALUES ( ?, ?, '0', ?, ?, 'yes')";
+$sql = "INSERT INTO Account (Name, Password, Authority, Email, RegistrationIP, VerificationToken) VALUES ( ?, ?, '0', ?, ?, ?)";
+$params = array($_POST['username'], $pass, $_POST['email'], $ip, "yes");
+
 $result = sqlsrv_query($mssql, $sql, $params);
 $user = $_POST['username'];
 exit(header("Location: index.php?reg=sucess&user=$user"));
@@ -131,7 +127,7 @@ exit(header("Location: index.php?reg=sucess&user=$user"));
 }
 ?>
 
-<div id="container"><form method="POST" action="nos_register.php"> 
+<div id="container"><form method="POST" action="index.php"> 
 	<img src="img/logo.png" width="100%">
 	<div class="tooltip" class="tooltip"><input id="user" name="username" type="text" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'" >
 		
@@ -159,9 +155,6 @@ exit(header("Location: index.php?reg=sucess&user=$user"));
 </form></div>  
 
 <script type="text/javascript" src="js/script.js"></script>
-<div id="footer">
- Copyright 2018 <a id="link" href="//github.com/gorlik1337/">Gorlik1337</a> All rights reserved.
-</div>
 
 </body>
 </html>
