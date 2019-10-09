@@ -1,6 +1,8 @@
 # Nostale-Priv-Register-Page
 Register page for nostale opennos serwers 
 
+#settings
+Ewerything what you need you can change in include.php
 
 ## :camera: Screenshots
 ![alt text][ss1]
